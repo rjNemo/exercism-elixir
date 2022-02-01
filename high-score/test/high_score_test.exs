@@ -175,12 +175,7 @@ defmodule HighScoreTest do
         |> HighScore.get_players()
         |> Enum.sort()
 
-      assert players == [
-               "Chris McCord",
-               "Dave Thomas",
-               "José Valim",
-               "Saša Jurić"
-             ]
+      assert players == ["Chris McCord", "Dave Thomas", "José Valim", "Saša Jurić"]
     end
   end
 end
