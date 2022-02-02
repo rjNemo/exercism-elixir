@@ -14,6 +14,7 @@ defmodule ResistorColor do
     grey: 8,
     white: 9
   }
+
   @doc """
   Return the value of a color band
   """
