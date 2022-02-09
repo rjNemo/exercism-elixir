@@ -18,18 +18,19 @@ defmodule BinarySearch do
   """
 
   @spec search(tuple, integer) :: {:ok, integer} | :not_found
+  def search({}, _), do: :not_found
   def search({key}, key), do: {:ok, 0}
+  def search(numbers, key), do: search(numbers, key, 0, tuple_size(numbers) - 1)
 
-  def search(numbers, key) do
-    count = tuple_size(numbers)
-    mid = div(count, 2)
-    {left, right} = numbers |> Tuple.to_list() |> Enum.split(mid)
+  defp search(_, _, lo, hi) when hi < lo, do: :not_found
 
-    cond do
-      key > List.last(left) -> search(right, key)
-      key < hd(right) -> search(left, key)
+  defp search(numbers, key, lo, hi) do
+    mid = lo + div(hi - lo, 2)
+
+    case elem(numbers, mid) do
+      ^key -> {:ok, mid}
+      result when result > key -> search(numbers, key, lo, mid - 1)
+      result when result < key -> search(numbers, key, mid + 1, hi)
     end
   end
-
-  # def search(_, _), do: :not_found
 end
