@@ -10,7 +10,5 @@ defmodule Knapsack do
       when weight > maximum_weight,
       do: 0
 
-  def maximum_value(items, maximum_weight) do
-    items |> Enum.filter(fn %{weight: weight} -> weight < maximum_weight end)
-  end
+  def maximum_value(items, maximum_weight), do: Enum.filter(items, &(&1.weight < maximum_weight))
 end
