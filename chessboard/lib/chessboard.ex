@@ -5,7 +5,5 @@ defmodule Chessboard do
 
   def ranks, do: Enum.to_list(rank_range())
 
-  def files do
-    file_range() |> Enum.map(&<<&1>>)
-  end
+  def files, do: file_range() |> Enum.map(&<<&1>>)
 end
