@@ -5,8 +5,8 @@ defmodule Plot do
 end
 
 defmodule CommunityGarden do
-  def start(opts \\ nil) do
-    Agent.start_link(fn -> {[], 0} end, name: Plot)
+  def start(opts \\ [name: Plot]) do
+    Agent.start_link(fn -> {[], 0} end, opts)
   end
 
   def list_registrations(pid) do
